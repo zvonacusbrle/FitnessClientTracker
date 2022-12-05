@@ -22,6 +22,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.delay
 
 class SplashFragment : Fragment() {
@@ -56,6 +57,7 @@ class SplashFragment : Fragment() {
                 )
             )
             delay(3000L)
+            findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
         }
 
         Box(
