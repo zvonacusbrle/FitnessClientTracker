@@ -18,11 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import kotlinx.coroutines.delay
 
@@ -35,15 +33,15 @@ class SplashFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                Surface(color = colorResource(R.color.bg_color), modifier = Modifier.fillMaxSize()) {
-                    SplashScreen()
+                Surface(color = Color.White, modifier = Modifier.fillMaxSize()) {
+                    SplashScreenAnimation()
                 }
             }
         }
     }
 
     @Composable
-    fun SplashScreen() {
+    fun SplashScreenAnimation() {
         val scale = remember {
             Animatable(0f)
         }
@@ -71,6 +69,7 @@ class SplashFragment : Fragment() {
             )
         }
     }
+
 
 
 }
