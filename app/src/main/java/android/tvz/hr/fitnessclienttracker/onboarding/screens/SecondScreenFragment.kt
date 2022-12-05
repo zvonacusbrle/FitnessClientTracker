@@ -1,4 +1,4 @@
-package android.tvz.hr.fitnessclienttracker.onboarding
+package android.tvz.hr.fitnessclienttracker.onboarding.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
