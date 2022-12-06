@@ -1,5 +1,6 @@
 package android.tvz.hr.fitnessclienttracker.onboarding
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import androidx.viewpager2.widget.ViewPager2
 class ViewPagerFragment : Fragment() {
 
 
+    @SuppressLint("InflateParams")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

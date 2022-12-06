@@ -1,5 +1,6 @@
 package android.tvz.hr.fitnessclienttracker.onboarding.screens
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.tvz.hr.fitnessclienttracker.R
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,12 +30,17 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 
 class FirstScreenFragment : Fragment() {
+
+    @SuppressLint("InflateParams")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPager)
         return ComposeView(requireContext()).apply {
             setContent {
                 Column(
@@ -49,7 +56,8 @@ class FirstScreenFragment : Fragment() {
                             .fillMaxSize()
                             .aspectRatio(1f)
                             .background(
-                                colorResource(id = R.color.bg_color), shape = CircleShape),
+                                colorResource(id = R.color.bg_color), shape = CircleShape
+                            ),
                         contentAlignment = Alignment.Center
                     ) {
                         Image(
@@ -65,12 +73,17 @@ class FirstScreenFragment : Fragment() {
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(text = "Welcome")
                     Spacer(modifier = Modifier.height(16.dp))
+                    AndroidView(factory = { context ->
+                        val view = LayoutInflater.from(context)
+                            .inflate(R.layout.fragment_view_pager, null, false)
+                        view
+                    })
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
                     ) {
                         IconButton(
-                            onClick = { /*TODO*/ },
+                            onClick = {  viewPager?.currentItem = 1 },
                             modifier = Modifier
                                 .height(90.dp)
                                 .width(90.dp)
@@ -87,5 +100,10 @@ class FirstScreenFragment : Fragment() {
             }
 
         }
+    }
+
+    @Composable
+    private fun iconButton() {
+        TODO("Not yet implemented")
     }
 }

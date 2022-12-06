@@ -56,7 +56,7 @@ class SplashFragment : Fragment() {
                     }
                 )
             )
-            delay(3000L)
+            delay(800L)
             findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
         }
 
