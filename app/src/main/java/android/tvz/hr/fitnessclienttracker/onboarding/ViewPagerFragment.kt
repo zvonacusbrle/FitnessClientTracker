@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.tvz.hr.fitnessclienttracker.R
 import android.tvz.hr.fitnessclienttracker.onboarding.screens.FirstScreenFragment
 import android.tvz.hr.fitnessclienttracker.onboarding.screens.SecondScreenFragment
+import android.tvz.hr.fitnessclienttracker.onboarding.screens.ThirdScreenFragment
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.viewpager2.widget.ViewPager2
@@ -27,7 +28,8 @@ class ViewPagerFragment : Fragment() {
             setContent {
                 val fragmentList = arrayListOf(
                     FirstScreenFragment(),
-                    SecondScreenFragment()
+                    SecondScreenFragment(),
+                    ThirdScreenFragment()
                 )
                 val adapter = ViewPagerAdapter(
                     fragmentList,
