@@ -2,6 +2,7 @@ package android.tvz.hr.fitnessclienttracker.onboarding.screens
 
 import android.annotation.SuppressLint
 import android.tvz.hr.fitnessclienttracker.R
+import android.tvz.hr.fitnessclienttracker.onboarding.screens.components.FinishButton
 import android.view.LayoutInflater
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -9,19 +10,17 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.graphics.toColorInt
 import androidx.viewpager2.widget.ViewPager2
 
 @SuppressLint("InflateParams")
@@ -70,28 +69,35 @@ fun OnBoardingPage(
                 .inflate(R.layout.fragment_view_pager, null, false)
             view
         })
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(20.dp)
-        ) {
-            IconButton(
-                onClick = { viewPager?.currentItem = currentPage },
+        if(currentPage == 3){
+            FinishButton()
+        } else {
+            Box(
                 modifier = Modifier
-                    .height(70.dp)
-                    .width(70.dp)
-                    .align(Alignment.TopEnd)
-                    .background(
-                        colorResource(id = backgroundColor), shape = CircleShape
-                    )
+                    .fillMaxSize()
+                    .padding(20.dp)
             ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_baseline_keyboard_arrow_right_24),
-                    contentDescription = "icon_arrow_right",
-                )
+                IconButton(
+                    onClick = { viewPager?.currentItem = currentPage },
+                    modifier = Modifier
+                        .height(70.dp)
+                        .width(70.dp)
+                        .align(Alignment.TopEnd)
+                        .background(
+                            colorResource(id = backgroundColor), shape = CircleShape
+                        )
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_baseline_keyboard_arrow_right_24),
+                        contentDescription = "icon_arrow_right",
+                    )
+                }
             }
         }
+
     }
 }
+
+
 
 
