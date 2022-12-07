@@ -2,16 +2,16 @@ package android.tvz.hr.fitnessclienttracker.onboarding
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.tvz.hr.fitnessclienttracker.R
 import android.tvz.hr.fitnessclienttracker.onboarding.screens.FirstScreenFragment
 import android.tvz.hr.fitnessclienttracker.onboarding.screens.SecondScreenFragment
 import android.tvz.hr.fitnessclienttracker.onboarding.screens.ThirdScreenFragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 
 
@@ -43,10 +43,8 @@ class ViewPagerFragment : Fragment() {
                     viewPager.adapter = adapter
                     view
                 })
-
             }
         }
-
     }
 
 }

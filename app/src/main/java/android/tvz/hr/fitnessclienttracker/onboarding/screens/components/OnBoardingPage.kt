@@ -12,6 +12,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,7 +21,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.core.graphics.toColorInt
 import androidx.viewpager2.widget.ViewPager2
 
 @SuppressLint("InflateParams")
@@ -32,6 +32,7 @@ fun OnBoardingPage(
     title: String?,
     textContent: String,
     currentPage: Int,
+    isDialogOpen: MutableState<Boolean>? = null
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -69,8 +70,8 @@ fun OnBoardingPage(
                 .inflate(R.layout.fragment_view_pager, null, false)
             view
         })
-        if(currentPage == 3){
-            FinishButton()
+        if (currentPage == 3) {
+            FinishButton(isDialogOpen)
         } else {
             Box(
                 modifier = Modifier

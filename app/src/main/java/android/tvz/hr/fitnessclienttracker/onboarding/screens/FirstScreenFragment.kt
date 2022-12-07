@@ -12,10 +12,11 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 
 class FirstScreenFragment : Fragment() {
-
     @SuppressLint("InflateParams")
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPager)
         return ComposeView(requireContext()).apply {
@@ -31,6 +32,4 @@ class FirstScreenFragment : Fragment() {
             }
         }
     }
-
-
 }

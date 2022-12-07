@@ -5,7 +5,6 @@ import android.tvz.hr.fitnessclienttracker.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.material.Text
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
