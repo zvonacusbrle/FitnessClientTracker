@@ -1,6 +1,8 @@
 package android.tvz.hr.fitnessclienttracker.onboarding.screens.components
 
+import android.content.Context
 import android.tvz.hr.fitnessclienttracker.R
+import android.tvz.hr.fitnessclienttracker.onboarding.screens.ThirdScreenFragment
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -13,16 +15,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun FinishDialog() {
+fun FinishDialog(thirdScreenFragment: ThirdScreenFragment) {
     Dialog(
         onDismissRequest = { /*TODO*/ },
         properties = DialogProperties(usePlatformDefaultWidth = false)
@@ -45,7 +48,7 @@ fun FinishDialog() {
             ) {
 
                 Text(
-                    text = "Congratulations",
+                    text = stringResource(R.string.finish_dialog_title),
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
                     fontSize = 25.sp
@@ -60,7 +63,12 @@ fun FinishDialog() {
                 )
                 Spacer(modifier = Modifier.padding(15.dp))
                 Button(
-                    onClick = { },
+                    onClick = {
+                        findNavController(thirdScreenFragment).navigate(R.id.action_viewPagerFragment_to_logIn)
+                        thirdScreenFragment.boardingFinished()
+
+
+                    },
                     modifier = Modifier
                         .fillMaxWidth(0.5f)
                         .height(60.dp)
@@ -76,10 +84,12 @@ fun FinishDialog() {
         }
     }
 
+
 }
 
-@Composable
-@Preview
-fun FinishDialogPreview() {
-    FinishDialog()
-}
+
+
+
+
+const val ONBOARDING = "onBoarding"
+const val FINISHED = "Finished"

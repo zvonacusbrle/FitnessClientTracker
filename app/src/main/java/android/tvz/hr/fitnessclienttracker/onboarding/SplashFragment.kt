@@ -1,7 +1,12 @@
 package android.tvz.hr.fitnessclienttracker.onboarding
 
+import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.tvz.hr.fitnessclienttracker.R
+import android.tvz.hr.fitnessclienttracker.onboarding.screens.components.FINISHED
+import android.tvz.hr.fitnessclienttracker.onboarding.screens.components.ONBOARDING
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,8 +61,15 @@ class SplashFragment : Fragment() {
                     }
                 )
             )
-            delay(800L)
-            findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
+            if(checkOnBoardingFinished()){
+                Handler(Looper.getMainLooper()).postDelayed({
+                    findNavController().navigate(R.id.action_splashFragment_to_logIn)
+                }, 800)
+            } else {
+                Handler(Looper.getMainLooper()).postDelayed({
+                    findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
+                }, 800)
+            }
         }
 
         Box(
@@ -70,6 +82,11 @@ class SplashFragment : Fragment() {
                 modifier = Modifier.scale(scale.value)
             )
         }
+    }
+
+    private fun checkOnBoardingFinished(): Boolean {
+        val sharedPref = requireActivity().getSharedPreferences(ONBOARDING, Context.MODE_PRIVATE)
+        return sharedPref.getBoolean(FINISHED, false)
     }
 
 

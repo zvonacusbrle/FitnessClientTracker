@@ -1,8 +1,12 @@
 package android.tvz.hr.fitnessclienttracker.onboarding.screens
 
+import android.content.Context
 import android.os.Bundle
 import android.tvz.hr.fitnessclienttracker.R
+import android.tvz.hr.fitnessclienttracker.onboarding.ViewPagerFragment
+import android.tvz.hr.fitnessclienttracker.onboarding.screens.components.FINISHED
 import android.tvz.hr.fitnessclienttracker.onboarding.screens.components.FinishDialog
+import android.tvz.hr.fitnessclienttracker.onboarding.screens.components.ONBOARDING
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,16 +31,25 @@ class ThirdScreenFragment : Fragment() {
                 OnBoardingPage(
                     viewPager = viewPager,
                     backgroundColor = R.color.light_purple,
-                    fragmentPicture = R.drawable.third_fragment_picture,
+                    fragmentPicture = R.drawable.third__fragment_onboarding_picture,
                     title = "",
-                    textContent = "Thank you for installing this application",
+                    textContent = getString(R.string.third_fragment_content),
                     currentPage = 3,
                     isDialogOpen = isDialogOpen
                 )
                 if (isDialogOpen.value) {
-                    FinishDialog()
+                    FinishDialog(this@ThirdScreenFragment)
                 }
             }
         }
     }
+
+    fun boardingFinished() {
+        val sharedPref = requireActivity()
+            .getSharedPreferences(ONBOARDING, Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putBoolean(FINISHED, true)
+        editor.apply()
+    }
+
 }

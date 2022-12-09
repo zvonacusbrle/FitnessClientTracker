@@ -21,9 +21,9 @@ class SecondScreenFragment : Fragment() {
                 OnBoardingPage(
                     viewPager = viewPager,
                     backgroundColor = R.color.light_blue,
-                    fragmentPicture = R.drawable.second_fragment_picture,
+                    fragmentPicture = R.drawable.second_fragment_onboarding_picture,
                     title = "",
-                    textContent = "Check your users quickly",
+                    textContent = getString(R.string.second_fragment_content),
                     currentPage = 2
                 )
             }

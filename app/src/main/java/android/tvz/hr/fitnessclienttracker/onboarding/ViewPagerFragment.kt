@@ -16,21 +16,19 @@ import androidx.viewpager2.widget.ViewPager2
 
 
 class ViewPagerFragment : Fragment() {
-
-
     @SuppressLint("InflateParams")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val fragmentList = arrayListOf(
+            FirstScreenFragment(),
+            SecondScreenFragment(),
+            ThirdScreenFragment()
+        )
         return ComposeView(requireContext()).apply {
             setContent {
-                val fragmentList = arrayListOf(
-                    FirstScreenFragment(),
-                    SecondScreenFragment(),
-                    ThirdScreenFragment()
-                )
                 val adapter = ViewPagerAdapter(
                     fragmentList,
                     requireActivity().supportFragmentManager,
@@ -46,5 +44,4 @@ class ViewPagerFragment : Fragment() {
             }
         }
     }
-
 }

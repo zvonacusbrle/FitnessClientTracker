@@ -62,8 +62,8 @@ fun OnBoardingPage(
         if (title != null) {
             Text(text = title, fontSize = 28.sp)
         }
-        Spacer(modifier = Modifier.height(22.dp))
-        Text(text = textContent)
+        Spacer(modifier = Modifier.height(24.dp))
+        Text(text = textContent, fontSize = 16.sp)
         Spacer(modifier = Modifier.height(60.dp))
         AndroidView(factory = { context ->
             val view = LayoutInflater.from(context)

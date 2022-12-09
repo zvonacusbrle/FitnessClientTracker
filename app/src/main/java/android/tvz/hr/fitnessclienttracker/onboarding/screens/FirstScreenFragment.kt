@@ -24,9 +24,9 @@ class FirstScreenFragment : Fragment() {
                 OnBoardingPage(
                     viewPager = viewPager,
                     backgroundColor = R.color.light_green,
-                    fragmentPicture = R.drawable.first_fragment_picture,
-                    title = "Fitness Client Tracker",
-                    textContent = "Welcome",
+                    fragmentPicture = R.drawable.first_fragment_onboarding_picture,
+                    title = getString(R.string.first_fragment_title),
+                    textContent = getString(R.string.first_fragment_content),
                     currentPage = 1
                 )
             }
