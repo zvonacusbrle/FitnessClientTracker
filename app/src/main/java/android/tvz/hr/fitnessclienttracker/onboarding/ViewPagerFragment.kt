@@ -31,7 +31,7 @@ class ViewPagerFragment : Fragment() {
             setContent {
                 val adapter = ViewPagerAdapter(
                     fragmentList,
-                    requireActivity().supportFragmentManager,
+                    childFragmentManager,
                     lifecycle
                 )
                 AndroidView(factory = { context ->
