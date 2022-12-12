@@ -20,6 +20,9 @@
     <string name="register_user_register_button">Register</string>
     <string name="register_user_empty_user_field">User can\'t be blank</string>
     <string name="register_user_username_field_to_short">Username should contain at least 4 characters</string>
+    <string name="register_user_blank_password">Password can\'t be empty</string>
+    <string name="register_user_password_lenght">Password needs to contain at least 3 characters and no more than 8</string>
+    <string name="register_user_different_passwords">Password are not the same</string>
 
 
 </resources>
