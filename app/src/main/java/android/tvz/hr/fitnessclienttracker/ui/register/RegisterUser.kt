@@ -43,17 +43,12 @@ class RegisterUser : Fragment() {
 
 @Composable
 fun RegisterScreen() {
-
-
     Column(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .verticalScroll(rememberScrollState())
             .fillMaxSize()
-
-
-
     ) {
         Spacer(modifier = Modifier.height(40.dp))
         Image(
@@ -65,30 +60,36 @@ fun RegisterScreen() {
             contentDescription = stringResource(id = R.string.register_user_button_back)
         )
         Spacer(modifier = Modifier.height(20.dp))
+
         Text(
             text = stringResource(id = R.string.register_user_create_account),
             fontSize = 25.sp
         )
         Spacer(modifier = Modifier.height(5.dp))
+
         Text(
             text = stringResource(id = R.string.register_user_input_fields_bellow),
             fontSize = 18.sp
         )
         Spacer(modifier = Modifier.height(20.dp))
+
         MyTextField(label = stringResource(id = R.string.register_user_username))
         Spacer(modifier = Modifier.height(5.dp))
+
         MyTextField(
             label = stringResource(id = R.string.register_user_password),
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
         )
         Spacer(modifier = Modifier.height(5.dp))
+
         MyTextField(
             label = stringResource(id = R.string.register_user_password_again),
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
         )
         Spacer(modifier = Modifier.height(15.dp))
+
         OutlinedButton(
             onClick = { },
             border = BorderStroke(1.dp, color = colorResource(id = R.color.orange)),
@@ -96,12 +97,9 @@ fun RegisterScreen() {
             colors = ButtonDefaults.outlinedButtonColors(
                 contentColor = colorResource(id = R.color.orange)
             )
-        ){
-            Text( text = stringResource(id = R.string.register_user_register_button) )
+        ) {
+            Text(text = stringResource(id = R.string.register_user_register_button))
         }
-
-
-
     }
 }
 

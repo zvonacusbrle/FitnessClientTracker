@@ -74,4 +74,7 @@ dependencies {
     implementation "com.google.android.material:compose-theme-adapter:1.2.0"
     implementation 'androidx.activity:activity-compose:1.7.0-alpha02'
 
+    //ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
+
 }
