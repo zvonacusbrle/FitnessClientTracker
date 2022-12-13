@@ -2,8 +2,11 @@ package android.tvz.hr.fitnessclienttracker.ui.register.use_case
 
 import android.tvz.hr.fitnessclienttracker.R
 import androidx.compose.ui.res.stringResource
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ValidateUsername {
+@Singleton
+class ValidateUsername @Inject constructor() {
 
     fun execute (username: String) : ValidationResults{
         if(username.isBlank()){

@@ -1,8 +1,11 @@
 package android.tvz.hr.fitnessclienttracker.ui.register.use_case
 
 import android.tvz.hr.fitnessclienttracker.R
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ValidateRepeatedPassword {
+@Singleton
+class ValidateRepeatedPassword @Inject constructor(){
 
     fun execute(password: String, repeatedPassword: String) : ValidationResults{
         if(repeatedPassword.isBlank()){
