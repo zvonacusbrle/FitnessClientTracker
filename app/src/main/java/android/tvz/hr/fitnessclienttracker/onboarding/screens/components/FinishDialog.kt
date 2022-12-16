@@ -1,6 +1,5 @@
 package android.tvz.hr.fitnessclienttracker.onboarding.screens.components
 
-import android.content.Context
 import android.tvz.hr.fitnessclienttracker.R
 import android.tvz.hr.fitnessclienttracker.onboarding.screens.ThirdScreenFragment
 import androidx.compose.foundation.Image

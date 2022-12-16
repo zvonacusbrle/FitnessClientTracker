@@ -1,24 +1,27 @@
-package android.tvz.hr.fitnessclienttracker.ui.register.use_case
+package android.tvz.hr.fitnessclienttracker.register_feature.use_case
 
+import android.app.Application
 import android.tvz.hr.fitnessclienttracker.R
-import androidx.compose.ui.res.stringResource
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class ValidateUsername @Inject constructor() {
 
-    fun execute (username: String) : ValidationResults{
+
+    fun execute (username: String, applicationContext: Application) : ValidationResults {
         if(username.isBlank()){
             return ValidationResults(
                 successful = false,
-                errorMessage = R.string.register_user_empty_user_field.toString()
+                errorMessage = applicationContext.getString(R.string.register_user_username_field_to_short)
+
             )
         }
         if(username.length < 3){
             return ValidationResults(
                 successful = false,
-                errorMessage = R.string.register_user_username_field_to_short.toString()
+                errorMessage = applicationContext.getString(R.string.register_user_username_field_to_short)
+
             )
         }
         return ValidationResults(

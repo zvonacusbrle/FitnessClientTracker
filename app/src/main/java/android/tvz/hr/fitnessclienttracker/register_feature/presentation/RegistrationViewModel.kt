@@ -1,10 +1,9 @@
-package android.tvz.hr.fitnessclienttracker.ui.register
+package android.tvz.hr.fitnessclienttracker.register_feature.presentation
 
-import android.tvz.hr.fitnessclienttracker.ui.register.presentation.RegistrationFormEvent
-import android.tvz.hr.fitnessclienttracker.ui.register.presentation.RegistrationFormState
-import android.tvz.hr.fitnessclienttracker.ui.register.use_case.ValidatePassword
-import android.tvz.hr.fitnessclienttracker.ui.register.use_case.ValidateRepeatedPassword
-import android.tvz.hr.fitnessclienttracker.ui.register.use_case.ValidateUsername
+import android.app.Application
+import android.tvz.hr.fitnessclienttracker.register_feature.use_case.ValidatePassword
+import android.tvz.hr.fitnessclienttracker.register_feature.use_case.ValidateRepeatedPassword
+import android.tvz.hr.fitnessclienttracker.register_feature.use_case.ValidateUsername
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -21,15 +20,15 @@ class RegistrationViewModel @Inject constructor(
     private val validateUsername: ValidateUsername,
     private val validatePassword: ValidatePassword,
     private val validateRepeatedPassword: ValidateRepeatedPassword,
-
-): ViewModel() {
+    private val applicationContext: Application
+    ) : ViewModel() {
 
     var state by mutableStateOf(RegistrationFormState())
     private val validationEventChannel = Channel<ValidateEvent> { }
     val validationEvent = validationEventChannel.receiveAsFlow()
 
-    fun onEvent(event: RegistrationFormEvent){
-        when(event){
+    fun onEvent(event: RegistrationFormEvent) {
+        when (event) {
             is RegistrationFormEvent.UsernameChanged -> {
                 state = state.copy(username = event.username)
             }
@@ -39,31 +38,30 @@ class RegistrationViewModel @Inject constructor(
             is RegistrationFormEvent.RepeatedPasswordChanged -> {
                 state = state.copy(repeatedPassword = event.repeatedPassword)
             }
-            RegistrationFormEvent.Submit -> {
+            is RegistrationFormEvent.Submit -> {
                 submitData()
-
             }
         }
     }
 
     private fun submitData() {
-        val usernameResult = validateUsername.execute(state.username)
-        val passwordResult = validatePassword.execute(state.password)
+        val usernameResult = validateUsername.execute(state.username, applicationContext)
+        val passwordResult = validatePassword.execute(state.password,applicationContext)
         val repeatedPasswordResult = validateRepeatedPassword
-            .execute(state.password,state.repeatedPassword)
+            .execute(state.password, state.repeatedPassword, applicationContext)
 
         val hasErrors = listOf(
             usernameResult,
             passwordResult,
             repeatedPasswordResult
-        ).any{ !it.successful }
+        ).any { !it.successful }
 
-        if(hasErrors){
-            state = state.copy(
-                usernameError = usernameResult.errorMessage,
-                passwordError = passwordResult.errorMessage,
-                repeatedPasswordError = repeatedPasswordResult.errorMessage
-            )
+        state = state.copy(
+            usernameError = usernameResult.errorMessage,
+            passwordError = passwordResult.errorMessage,
+            repeatedPasswordError = repeatedPasswordResult.errorMessage
+        )
+        if (hasErrors) {
             return
         }
 
@@ -71,10 +69,9 @@ class RegistrationViewModel @Inject constructor(
             validationEventChannel.send(ValidateEvent.Success)
         }
 
-
     }
 }
 
-sealed class ValidateEvent(){
+sealed class ValidateEvent() {
     object Success : ValidateEvent()
 }

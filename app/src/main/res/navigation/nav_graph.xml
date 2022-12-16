@@ -42,6 +42,6 @@
     </fragment>
     <fragment
         android:id="@+id/registerUser"
-        android:name="android.tvz.hr.fitnessclienttracker.ui.register.RegisterUser"
+        android:name="android.tvz.hr.fitnessclienttracker.register_feature.presentation.RegisterUser"
         android:label="RegisterUser" />
 </navigation>

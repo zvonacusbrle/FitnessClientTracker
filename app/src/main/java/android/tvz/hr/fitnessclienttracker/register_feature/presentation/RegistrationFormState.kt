@@ -1,4 +1,4 @@
-package android.tvz.hr.fitnessclienttracker.ui.register.presentation
+package android.tvz.hr.fitnessclienttracker.register_feature.presentation
 
 data class RegistrationFormState(
     val username: String = "",

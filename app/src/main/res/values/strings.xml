@@ -23,6 +23,9 @@
     <string name="register_user_blank_password">Password can\'t be empty</string>
     <string name="register_user_password_lenght">Password needs to contain at least 3 characters and no more than 8</string>
     <string name="register_user_different_passwords">Password are not the same</string>
+    <string name="registration_user_success">Registration successful</string>
+    <string name="aaa">aaaaa</string>
+    <string name="aaaaaaa">aaaaaa</string>
 
 
 </resources>

@@ -1,4 +1,4 @@
-package android.tvz.hr.fitnessclienttracker.ui.register.use_case
+package android.tvz.hr.fitnessclienttracker.register_feature.use_case
 
 data class ValidationResults(
     val successful: Boolean,

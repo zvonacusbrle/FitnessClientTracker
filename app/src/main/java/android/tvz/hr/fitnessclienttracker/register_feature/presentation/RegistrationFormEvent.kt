@@ -1,4 +1,4 @@
-package android.tvz.hr.fitnessclienttracker.ui.register.presentation
+package android.tvz.hr.fitnessclienttracker.register_feature.presentation
 
 sealed class RegistrationFormEvent {
     data class UsernameChanged(val username: String) : RegistrationFormEvent()

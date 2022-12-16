@@ -3,7 +3,6 @@ package android.tvz.hr.fitnessclienttracker.onboarding.screens
 import android.content.Context
 import android.os.Bundle
 import android.tvz.hr.fitnessclienttracker.R
-import android.tvz.hr.fitnessclienttracker.onboarding.ViewPagerFragment
 import android.tvz.hr.fitnessclienttracker.onboarding.screens.components.FINISHED
 import android.tvz.hr.fitnessclienttracker.onboarding.screens.components.FinishDialog
 import android.tvz.hr.fitnessclienttracker.onboarding.screens.components.ONBOARDING
