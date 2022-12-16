@@ -9,7 +9,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,6 +25,8 @@ class RegistrationViewModel @Inject constructor(
 ): ViewModel() {
 
     var state by mutableStateOf(RegistrationFormState())
+    private val validationEventChannel = Channel<ValidateEvent> { }
+    val validationEvent = validationEventChannel.receiveAsFlow()
 
     fun onEvent(event: RegistrationFormEvent){
         when(event){
@@ -34,12 +40,41 @@ class RegistrationViewModel @Inject constructor(
                 state = state.copy(repeatedPassword = event.repeatedPassword)
             }
             RegistrationFormEvent.Submit -> {
+                submitData()
 
             }
         }
     }
 
+    private fun submitData() {
+        val usernameResult = validateUsername.execute(state.username)
+        val passwordResult = validatePassword.execute(state.password)
+        val repeatedPasswordResult = validateRepeatedPassword
+            .execute(state.password,state.repeatedPassword)
+
+        val hasErrors = listOf(
+            usernameResult,
+            passwordResult,
+            repeatedPasswordResult
+        ).any{ !it.successful }
+
+        if(hasErrors){
+            state = state.copy(
+                usernameError = usernameResult.errorMessage,
+                passwordError = passwordResult.errorMessage,
+                repeatedPasswordError = repeatedPasswordResult.errorMessage
+            )
+            return
+        }
+
+        viewModelScope.launch {
+            validationEventChannel.send(ValidateEvent.Success)
+        }
 
 
+    }
+}
 
+sealed class ValidateEvent(){
+    object Success : ValidateEvent()
 }
