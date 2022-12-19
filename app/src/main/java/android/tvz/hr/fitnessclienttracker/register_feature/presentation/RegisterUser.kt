@@ -44,7 +44,6 @@ class RegisterUser : Fragment() {
         return ComposeView(requireContext()).apply {
             setContent {
                 RegisterScreen(viewModel)
-                RegisterScreenPreview()
             }
         }
     }
@@ -120,9 +119,6 @@ fun RegisterScreen(viewModel: RegistrationViewModel) {
                 color = Color.Red
             )
         }
-
-
-
         Spacer(modifier = Modifier.height(5.dp))
 
         OutlinedTextField(
@@ -141,7 +137,6 @@ fun RegisterScreen(viewModel: RegistrationViewModel) {
             ),
             isError = state.passwordError != null
         )
-
         if(state.passwordError != null){
             Text(
                 text = state.passwordError,

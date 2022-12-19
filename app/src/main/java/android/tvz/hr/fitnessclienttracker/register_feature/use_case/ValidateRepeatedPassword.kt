@@ -17,14 +17,12 @@ class ValidateRepeatedPassword @Inject constructor() {
             return ValidationResults(
                 successful = false,
                 errorMessage = applicationContext.getString(R.string.register_user_blank_password)
-
             )
         }
         if (password != repeatedPassword) {
             return ValidationResults(
                 successful = false,
                 errorMessage = applicationContext.getString(R.string.register_user_different_passwords)
-
             )
         }
         return ValidationResults(
